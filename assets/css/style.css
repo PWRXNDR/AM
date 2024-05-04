@@ -17,16 +17,27 @@ body {
   background: transparent;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  background: #040404 url("../img/bg.jpg") top right no-repeat;
-  background-size: cover;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 100vh;
-  z-index: -1;
+    body::before {
+        content: "";
+        position: fixed;
+        background: #040404 url("../img/bg.jpg") top right no-repeat;
+        background-size: cover;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        z-index: -1;
+        transition: background-image 0.5s ease; /* Smooth transition */
+    }
+
+/* Default background for pianist */
+body.pianist::before {
+  background-image: url('../img/bg.jpg');
+}
+
+/* Background for designer */
+body.designer::before {
+  background-image: url('../img/background-light.png');
 }
 
 @media (min-width: 1024px) {
@@ -1188,3 +1199,289 @@ section .container {
 .credits a:hover {
   color: #fff;
 }
+
+body.pianist {
+    background-image: url('../img/background-image.jpg');
+}
+
+body.designer {
+    background-image: url('../img/background-light.png');
+}
+
+/* The switch - the box around the slider */
+.profile-toggle {
+    position: absolute;
+    display: inline-block;
+    top: 23%; /* Adjusted to place above the name */
+    left: 22%;
+    transform: translateX(-50%); /* Center horizontally */
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+    .profile-toggle .switch {
+        position: relative;
+        display: inline-block;
+        width: 8.2em;
+        height: 2.5em;
+    }
+
+    /* Hide default HTML checkbox */
+    .profile-toggle input {
+        display: none;
+    }
+
+    /* The slider */
+    .profile-toggle .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.41);
+        transition: .4s;
+        border-radius: 34px;
+        border: 2px solid rgba(7, 255, 9, 0.50); /* Added black border */
+    }
+
+        .profile-toggle .slider:before {
+            position: absolute;
+            content: "";
+            height: 35px;
+            width: 35px;
+            left: 4px;
+            background-color: rgba(7, 255, 9, 0.15);
+            transition: .4s;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+input:checked + .slider {
+    background-color: rgba(255,255,255,0.5);
+}
+
+    input:checked + .slider:before {
+        transform: translateX(250%);
+    }
+
+/* Label next to the slider */
+.toggle-label {
+    color: white;
+    display: inline-block;
+    margin-left: 8%;
+    font-size: 1.8em;
+    line-height: 40px; /* Align vertically */
+}
+
+.profile-toggle.move-right {
+    margin-left: 20%; /* Adjust the percentage or value to suit your design */
+    transition: right 0.4s ease-in-out;
+}
+
+
+@media (max-width: 992px) and (min-width: 550px) {
+    .profile-toggle.move-right {
+        margin-left: 40%; 
+        transition: margin-left 0.4s ease-in-out;
+    }
+}
+
+@media (max-width: 550px) {
+    .profile-toggle {
+        top: 70%; /* Slightly adjust the position if needed */
+        width: 6em; /* Smaller width for smaller screens */
+        height: 2em; /* Smaller height for balance */
+    }
+
+        .profile-toggle .switch {
+            width: 6em;
+            height: 2em;
+        }
+
+        .profile-toggle .slider {
+            height: 2em; /* Ensure slider fits new switch height */
+        }
+
+            .profile-toggle .slider:before {
+                height: 1.8em; /* Slightly smaller than slider height for style */
+                width: 1.8em; /* Keep it circular but smaller */
+            }
+
+    .toggle-label {
+        font-size: 1.3em; /* Smaller font size for smaller toggle */
+    }
+    input:checked + .slider:before {
+        transform: translateX(200%);
+    }
+}
+
+body {
+    color: #fff; 
+}
+
+    body.designer {
+        color: #000; 
+    }
+
+a {
+    color: #18d26e; 
+}
+
+body.designer a {
+    color: #35e888; 
+}
+
+/* Navbar link color */
+.navbar a, .navbar a:focus {
+    color: rgba(255, 255, 255, 0.7); 
+}
+
+body.designer .navbar a, body.designer .navbar a:focus {
+    color: rgba(0, 0, 0, 0.7); 
+}
+
+/* Active navbar link color */
+.navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
+    color: #fff; 
+}
+
+body.designer .navbar a:hover, body.designer .navbar .active, body.designer .navbar .active:focus, body.designer .navbar li:hover > a {
+    color: #000; 
+}
+
+/* Header and sections adjustments */
+#header.header-top, section .container {
+    background: rgba(0, 0, 0, 0.9); 
+}
+
+body.designer #header.header-top,
+body.designer section .container {
+    background: rgba(255, 255, 255, 0.9); 
+}
+
+
+body.designer .icon-box i,
+body.designer .counts .count-box i,
+body.designer .skills .progress-bar {
+    color: #18d26e; 
+}
+
+body.designer .testimonials .quote-icon-left,
+body.designer .testimonials .quote-icon-right {
+    color: rgba(0, 0, 0, 0.25); 
+}
+
+
+body.designer .section-title p,
+body.designer h3,
+body.designer h4,
+body.designer .resume-title,
+body.designer .portfolio #portfolio-flters li {
+    color: #000; 
+}
+
+
+body.designer .count-box span,
+body.designer .skill .val,
+body.designer .interests .icon-box h3 {
+    color: #000;
+}
+
+body.designer .testimonial-item h3,
+body.designer .testimonial-item h4 {
+    color: #000;
+}
+
+body.designer .contact .info-box h3,
+body.designer .contact .info-box p,
+body.designer .php-email-form label,
+body.designer .php-email-form input,
+body.designer .php-email-form textarea {
+    color: #000;
+}
+
+body.designer .php-email-form input,
+body.designer .php-email-form textarea {
+    background: rgba(255, 255, 255, 0.9); 
+}
+
+    body.designer .php-email-form input::placeholder,
+    body.designer .php-email-form textarea::placeholder {
+        color: rgba(0, 0, 0, 0.5); 
+    }
+
+body.designer #portfolio-flters li,
+body.designer .navbar a,
+body.designer .navbar a:focus {
+    color: #000;
+}
+
+    body.designer .navbar a:hover,
+    body.designer .navbar .active,
+    body.designer .navbar .active:focus,
+    body.designer .navbar li:hover > a {
+        color: #18d26e; 
+    }
+
+    body.designer #portfolio-flters li.filter-active,
+    body.designer #portfolio-flters li:hover {
+        background: #fff;
+        color: #18d26e; 
+    }
+
+body.designer #header h1 a,
+body.designer #toggle-text {
+    color: #000; 
+}
+
+body.designer span.skill {
+    color: #000; 
+}
+
+body.designer .toggle-label {
+    color: #000; 
+}
+
+
+body.designer .mobile-nav-toggle {
+    color: #000; 
+}
+
+body.designer .navbar-mobile {
+    background: rgba(255, 255, 255, 0.9); 
+}
+
+body.designer .skills .progress .skill {
+    color: #000; 
+}
+body.designer .contact .info-box .social-links a {
+    color: #000; /* Change to black for visibility on lighter backgrounds */
+}
+/*.switch-mode-prompt {
+    position: absolute;
+    top: 18%; 
+    margin-left: 2%; 
+    background-color: transparent;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    z-index: 100;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.arrow {
+    
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+*/

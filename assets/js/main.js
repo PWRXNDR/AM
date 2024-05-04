@@ -1,11 +1,3 @@
-/**
-* Template Name: Personal
-* Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
-* Updated: Mar 17 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
 (function() {
   "use strict";
 
@@ -252,3 +244,96 @@
   new PureCounter();
 
 })()
+
+document.addEventListener('DOMContentLoaded', function () {
+    const profileToggle = document.querySelector('#profile-toggle');
+    const toggleText = document.querySelector('#toggle-text');
+    const elementsToUpdate = document.querySelectorAll('[data-profile]');
+
+    profileToggle.addEventListener('change', function () {
+        if (this.checked) {
+            toggleText.textContent = 'Designer';
+            document.body.className = 'designer';
+        } else {
+            toggleText.textContent = 'Pianist';
+            document.body.className = 'pianist';
+        }
+
+        elementsToUpdate.forEach(el => {
+            const pianistContent = el.getAttribute('data-pianist');
+            const designerContent = el.getAttribute('data-designer');
+            el.textContent = this.checked ? designerContent : pianistContent;
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const navLinks = document.querySelectorAll('#navbar .nav-link');
+    const toggle = document.querySelector('.profile-toggle');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            if (this.getAttribute('href') !== '#header') {
+                toggle.classList.add('move-right');
+            } else {
+                toggle.classList.remove('move-right');
+            }
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const profileToggle = document.querySelector('#profile-toggle');
+    const elementsToUpdate = document.querySelectorAll('[data-profile]');
+    const imageToUpdate = document.querySelector('#profile-image'); // Select the image element
+    const iconsToUpdate = document.querySelectorAll('.icon i'); // Assuming all your icons are within <i> tags under .icon divs
+
+    profileToggle.addEventListener('change', function () {
+        const profile = this.checked ? 'designer' : 'pianist'; // Assuming 'checked' means 'designer'
+
+        // Update text content and handle specific element types
+        elementsToUpdate.forEach(el => {
+            const pianistContent = el.getAttribute('data-pianist');
+            const designerContent = el.getAttribute('data-designer');
+
+            if (el.tagName.toLowerCase() === 'img') { // Specific handling for img tags
+                el.src = profile === 'pianist' ? pianistContent : designerContent;
+            } else if (el.tagName.toLowerCase() === 'i') { // Specific handling for icon tags
+                el.className = profile === 'pianist' ? pianistContent : designerContent;
+            } else if (el.tagName.toLowerCase() === 'li') { // Special handling for <li> tags
+                el.innerHTML = profile === 'pianist' ? pianistContent : designerContent;
+            } else {
+                el.textContent = profile === 'pianist' ? pianistContent : designerContent;
+            }
+        });
+
+        // Update icon classes
+        iconsToUpdate.forEach(icon => {
+            const pianistIcon = icon.dataset.pianist;
+            const designerIcon = icon.dataset.designer;
+            icon.className = profile === 'pianist' ? pianistIcon : designerIcon;
+        });
+
+        // Update image source
+        if (imageToUpdate) {
+            imageToUpdate.src = profile === 'pianist' ? imageToUpdate.getAttribute('data-pianist') : imageToUpdate.getAttribute('data-designer');
+        }
+
+        // Update body class for theme styling
+        document.body.className = profile;
+    });
+});
+
+//document.addEventListener('DOMContentLoaded', function () {
+  //  const toggle = document.getElementById('profile-toggle');
+  //  const prompt = document.getElementById('switch-mode-prompt');
+
+    // Hide prompt after 10 to 30 seconds or when the toggle is used
+  //  setTimeout(function () {
+   //     prompt.style.display = 'none';
+    //}, 30000); // Adjust time as needed between 10000 (10 seconds) and 30000 (30 seconds)
+
+    //toggle.addEventListener('change', function () {
+    //    prompt.style.display = 'none';
+    //});
+//});
