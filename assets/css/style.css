@@ -1,10 +1,3 @@
-/**
-* Template Name: Personal
-* Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
-* Updated: Mar 17 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
 /*--------------------------------------------------------------
 # General
@@ -40,10 +33,18 @@ body.designer::before {
   background-image: url('../img/background-light.png');
 }
 
+/* Media query for smaller screens, adjust breakpoint as needed */
+@media (max-width: 1023px) {
+    body.pianist::before {
+        background-position: top right; 
+    }
+}
+
+/* Ensuring background is fixed only on wider screens */
 @media (min-width: 1024px) {
-  body::before {
-    background-attachment: fixed;
-  }
+    body::before {
+        background-attachment: fixed;
+    }
 }
 
 a {
@@ -1289,26 +1290,27 @@ input:checked + .slider {
 @media (max-width: 550px) {
     .profile-toggle {
         top: 70%; /* Slightly adjust the position if needed */
-        width: 6em; /* Smaller width for smaller screens */
-        height: 2em; /* Smaller height for balance */
+        width: 5em; /* Smaller width for smaller screens */
+        height: 1.5em; /* Smaller height for balance */
     }
 
         .profile-toggle .switch {
-            width: 6em;
-            height: 2em;
+            width: 5em;
+            height: 1.5em;
         }
 
         .profile-toggle .slider {
-            height: 2em; /* Ensure slider fits new switch height */
+            height: 1.5em; /* Ensure slider fits new switch height */
         }
 
             .profile-toggle .slider:before {
-                height: 1.8em; /* Slightly smaller than slider height for style */
-                width: 1.8em; /* Keep it circular but smaller */
+                height: 1.3em; /* Slightly smaller than slider height for style */
+                width: 1.3em; /* Keep it circular but smaller */
             }
 
     .toggle-label {
-        font-size: 1.3em; /* Smaller font size for smaller toggle */
+        font-size: 1em; /* Smaller font size for smaller toggle */
+        margin-top: -10%;
     }
     input:checked + .slider:before {
         transform: translateX(200%);
